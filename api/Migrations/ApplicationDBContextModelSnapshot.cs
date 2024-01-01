@@ -60,14 +60,14 @@ namespace api.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<decimal>("LastDiv")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("LastDiv")
+                        .HasColumnType("float");
 
                     b.Property<long>("MarketCap")
                         .HasColumnType("bigint");
 
-                    b.Property<decimal>("Purchase")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Purchase")
+                        .HasColumnType("float");
 
                     b.Property<string>("Symbol")
                         .IsRequired()

@@ -10,17 +10,14 @@ namespace api.Models
 
         public int Id { get; set; }
 
-        public string Title { get; set; } = string.Empty;
+        public required string Title { get; set; }
 
-        public string Content { get; set; } = string.Empty;
+        public required string Content { get; set; }
 
         public DateTime CreatedOn { get; set; } = DateTime.Now;
 
         public int? StockId { get; set; }
 
-        /// <summary>
-        /// Navigation Property
-        /// </summary>
         public Stock? Stock { get; set; }
     }
 }
