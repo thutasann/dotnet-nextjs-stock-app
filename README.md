@@ -4,7 +4,8 @@
 
 - Dotnet Core
 - Nextjs
-- MSSQL
+- MySQL
+- Entity Framework Core
 
 ## Scripts
 
@@ -13,7 +14,6 @@
 ```bash
 dotnet new webapi -o api
 ```
-
 
 ### Dotnet Watch Run
 
@@ -24,3 +24,21 @@ cd api
 ```bash
 dotnet watch run
 ```
+
+### Entity Framework Migration
+
+```bash
+dotnet tool install --global dotnet-ef --version 7.*
+```
+
+```bash
+dotnet ef migrations add init
+```
+
+```bash
+dotnet ef database update
+```
+
+## Useful Links
+
+- [Install MSSQL on Mac](https://setapp.com/how-to/install-sql-server)
