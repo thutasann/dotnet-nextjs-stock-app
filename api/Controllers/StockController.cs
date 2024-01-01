@@ -1,4 +1,5 @@
 using api.Data;
+using api.Dtos.Stock;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +10,12 @@ namespace api.Controllers
     public class StockController : ControllerBase
     {
         private readonly ApplicationDBContext _context;
-        public StockController(ApplicationDBContext context)
+        private readonly ILogger<StockController> _logger;
+
+        public StockController(ApplicationDBContext context, ILogger<StockController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -31,6 +35,16 @@ namespace api.Controllers
                 return NotFound();
             }
             return Ok(stock.ToStockDto());
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
+        {
+            var stockModel = stockDto.ToStockFromCreateDTO();
+            _logger.LogInformation("Stock Modal => ", stockModel);
+            _context.Stocks.Add(stockModel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
     }
 }
