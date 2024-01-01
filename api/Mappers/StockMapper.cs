@@ -9,8 +9,6 @@ namespace api.Mappers
         /// <summary>
         /// Stock DTO Mapper
         /// </summary>
-        /// <param name="stockModel"></param>
-        /// <returns></returns>
         public static StockDto ToStockDto(this Stock stockModel)
         {
             return new StockDto{
@@ -25,10 +23,8 @@ namespace api.Mappers
         }
 
         /// <summary>
-        /// To Stock From Create Stock DTO Mapper
+        /// Stock From CreateStockRequest DTO Mapper
         /// </summary>
-        /// <param name="stockDto"></param>
-        /// <returns></returns>
         public static Stock ToStockFromCreateDTO(this CreateStockRequestDto stockDto)
         {
             return new Stock{

@@ -38,7 +38,3 @@ dotnet ef migrations add init
 ```bash
 dotnet ef database update
 ```
-
-## Useful Links
-
-- [Install MSSQL on Mac](https://setapp.com/how-to/install-sql-server)

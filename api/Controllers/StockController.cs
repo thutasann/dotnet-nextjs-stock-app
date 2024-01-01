@@ -41,7 +41,6 @@ namespace api.Controllers
         public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
         {
             var stockModel = stockDto.ToStockFromCreateDTO();
-            _logger.LogInformation("Stock Modal => ", stockModel);
             _context.Stocks.Add(stockModel);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
