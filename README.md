@@ -2,11 +2,13 @@
 
 This is the Stock Market Social Media Platform FullStack App with DotnetCore and Nextjs.
 
+This app will be mainly focused on the `dotnet` backend.
+
 ## Tech Stacks
 
 - Dotnet Core 7
-- Nextjs
 - MySQL
+- Nextjs (will be page router as app router not working properly w/ c# project :3)
 - Entity Framework Core
 
 ## Scripts
