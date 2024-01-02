@@ -1,8 +1,10 @@
 # Dotnet-Core Nextjs Stock Market FullStack App
 
+This is the Stock Market Social Media Platform FullStack App with DotnetCore and Nextjs.
+
 ## Tech Stacks
 
-- Dotnet Core
+- Dotnet Core 7
 - Nextjs
 - MySQL
 - Entity Framework Core
@@ -25,7 +27,7 @@ cd api
 dotnet watch run
 ```
 
-### Entity Framework Migration
+### EF Database Migration
 
 ```bash
 dotnet tool install --global dotnet-ef --version 7.*
