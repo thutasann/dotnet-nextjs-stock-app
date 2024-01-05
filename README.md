@@ -8,8 +8,9 @@ This app will be mainly focused on the `dotnet` backend.
 
 - Dotnet Core 7
 - MySQL
-- Nextjs (will be page router as app router not working properly w/ c# project :3)
 - Entity Framework Core
+- Nextjs (will be page router as app router not working properly w/ c# project :3)
+- Typescript
 
 ## Scripts
 

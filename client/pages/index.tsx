@@ -1,19 +1,9 @@
-import { useEffect, useState } from 'react'
-
+import { Button } from '@/components/ui/button'
 export default function Home() {
-  const [data, setData] = useState<any>()
-  const [loading, setLoading] = useState(false)
-  console.log('data', data)
-
-  useEffect(() => {
-    setLoading(true)
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, [])
-
-  return <h1 className="text-red-400">{loading ? 'Loading...' : 'Ok'}</h1>
+  return (
+    <main className="flex flex-col items-center justify-center p-3">
+      <h1 className="text-xl font-bold my-2">Welcome to DotnetCore Nextjs FullStack App</h1>
+      <Button variant="secondary">OK</Button>
+    </main>
+  )
 }
