@@ -17,7 +17,9 @@ builder.Services.AddDbContext<ApplicationDBContext>(options => {
     options.UseMySQL(connectionString);
 });
 builder.Services.AddScoped<IStockRepository, StockRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
+// ------ Cors
 builder.Services.AddCors(options => {
     options.AddPolicy("myAppCors", policy => {
         policy.WithOrigins(allowedOrigin)
