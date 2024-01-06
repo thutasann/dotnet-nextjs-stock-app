@@ -6,5 +6,12 @@ export interface IStockResponse {
   lastDiv: number
   industry: string
   marketCap: number
-  comments: any[]
+  comments: IComment[]
+}
+
+export interface IComment {
+  userId: number
+  id: number
+  title: string
+  completed: boolean
 }

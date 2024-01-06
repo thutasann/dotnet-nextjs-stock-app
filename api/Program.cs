@@ -13,6 +13,9 @@ string connectionString = "server=localhost;user=root;password=thutasann2002tts;
 string[] allowedOrigin = {"http://localhost:3000", "http://localhost:3001"};
 
 // ------ Services
+builder.Services.AddControllers().AddNewtonsoftJson(options => {
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+});
 builder.Services.AddDbContext<ApplicationDBContext>(options => {
     options.UseMySQL(connectionString);
 });

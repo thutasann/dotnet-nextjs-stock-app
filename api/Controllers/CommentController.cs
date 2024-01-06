@@ -1,5 +1,6 @@
 using api.Data;
 using api.Interfaces;
+using api.Mappers;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Crypto.Signers;
@@ -19,6 +20,24 @@ namespace api.Controllers
             _logger = logger;
             _context = context;
             _commentRepository = commentRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll(){
+            var comments = await _commentRepository.GetAllAsync();
+            var commentDto = comments.Select(s => s.ToCommentDto());
+            return Ok(commentDto);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id){
+            var comment = await _commentRepository.GetByIdAsync(id);
+
+            if(comment == null){
+                return NotFound();
+            }
+
+            return Ok(comment.ToCommentDto());
         }
     }
 }

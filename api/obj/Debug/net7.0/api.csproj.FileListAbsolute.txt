@@ -89,3 +89,7 @@
 /Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/runtimes/win-x64/native/k5sprt64.dll
 /Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/runtimes/win-x64/native/krb5_64.dll
 /Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/runtimes/win-x64/native/krbcc64.dll
+/Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Newtonsoft.Json.Bson.dll

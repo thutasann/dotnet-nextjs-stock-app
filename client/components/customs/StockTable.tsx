@@ -30,7 +30,7 @@ function StockTable({ data }: IStockTable) {
   })
 
   return (
-    <div className="rounded-md">
+    <div className="rounded-md border border-slate-600 p-2 w-full">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

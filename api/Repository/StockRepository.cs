@@ -42,14 +42,12 @@ namespace api.Repository
 
         public async Task<List<Stock>> GetAllAsync()
         {
-            return await _context.Stocks.ToListAsync();
+            return await _context.Stocks.Include(c => c.Comments).ToListAsync();
         }
 
-        public async Task<Stock> GetByIdAsync(int id)
+        public async Task<Stock?> GetByIdAsync(int id)
         {
-#pragma warning disable CS8603 // Possible null reference return.
-            return await _context.Stocks.FindAsync(id);
-#pragma warning restore CS8603 // Possible null reference return.
+            return await _context.Stocks.Include(c => c.Comments).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto stockDto)
