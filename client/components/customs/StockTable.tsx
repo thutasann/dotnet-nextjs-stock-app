@@ -2,13 +2,21 @@ import { IStockResponse } from '@/types/stocks.interface'
 import React from 'react'
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { useRouter } from 'next/router'
+import { Button } from '../ui/button'
 
 interface IStockTable {
   data: IStockResponse[]
 }
 
 function StockTable({ data }: IStockTable) {
+  const router = useRouter()
+
   const columns: ColumnDef<IStockResponse>[] = [
+    {
+      accessorKey: 'id',
+      header: 'Stock Id',
+    },
     {
       accessorKey: 'companyName',
       header: 'Company Name',
@@ -20,6 +28,14 @@ function StockTable({ data }: IStockTable) {
     {
       accessorKey: 'symbol',
       header: 'Symbol',
+    },
+    {
+      header: 'Action',
+      cell: ({ row }) => (
+        <Button variant="secondary" onClick={() => router.push(`/stock/${row.getValue('id')}`)}>
+          View Detail
+        </Button>
+      ),
     },
   ]
 
@@ -45,10 +61,11 @@ function StockTable({ data }: IStockTable) {
             </TableRow>
           ))}
         </TableHeader>
+
         <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
+              <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'} className="cursor-pointer">
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
                 ))}

@@ -9,6 +9,11 @@ namespace api.Mappers
 {
     public static class CommentMapper
     {
+        /// <summary>
+        /// Comment DTO Mapper 🚀
+        /// </summary>
+        /// <param name="commentModel"></param>
+        /// <returns></returns>
        public static CommentDto ToCommentDto(this Comment commentModel){
             return new CommentDto{
                 Id = commentModel.Id,

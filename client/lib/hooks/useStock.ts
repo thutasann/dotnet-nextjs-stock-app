@@ -16,3 +16,18 @@ export const useStockList = () => {
     isLoading,
   }
 }
+
+export const useStockDetail = (id?: string) => {
+  const { data, isLoading } = useQuery<IStockResponse>({
+    queryKey: ['stock'],
+    queryFn: async () => {
+      const response = await axiosInstance.get(`/stock/${id}`)
+      return response.data
+    },
+    enabled: !!id,
+  })
+  return {
+    data,
+    isLoading,
+  }
+}
