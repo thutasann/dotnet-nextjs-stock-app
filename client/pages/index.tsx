@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <Container>
-      <h1 className="text-xl font-bold my-2">DotnetCore Nextjs FullStack App</h1>
+      <h1 className="text-xl font-bold mt-2 mb-5">DotnetCore Nextjs FullStack App</h1>
       <AddStockModaienl /> <br />
       {data ? <StockTable data={data} /> : <Loader />}
     </Container>

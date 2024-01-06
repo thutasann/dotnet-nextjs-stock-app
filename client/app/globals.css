@@ -71,6 +71,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-black text-slate-50;
+    @apply bg-slate-900 text-slate-50;
   }
 }
