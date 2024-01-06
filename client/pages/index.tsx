@@ -1,3 +1,4 @@
+import { AddStockModaienl } from '@/components/customs/AddStockModal'
 import Container from '@/components/customs/Container'
 import Loader from '@/components/customs/Loader'
 import StockTable from '@/components/customs/StockTable'
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <Container>
       <h1 className="text-xl font-bold my-2">DotnetCore Nextjs FullStack App</h1>
+      <AddStockModaienl /> <br />
       {data ? <StockTable data={data} /> : <Loader />}
     </Container>
   )

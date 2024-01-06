@@ -15,11 +15,11 @@ function StockTable({ data }: IStockTable) {
   const columns: ColumnDef<IStockResponse>[] = [
     {
       accessorKey: 'id',
-      header: 'Stock Id',
+      header: 'Id',
     },
     {
       accessorKey: 'companyName',
-      header: 'Company Name',
+      header: 'Company',
     },
     {
       accessorKey: 'industry',

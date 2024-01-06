@@ -15,3 +15,12 @@ export interface IComment {
   title: string
   completed: boolean
 }
+
+export interface IStockRequest {
+  symbol: string
+  companyName: string
+  purchase: number
+  lastDiv: number
+  industry: string
+  marketCap: number
+}
