@@ -4,11 +4,12 @@ import { useQuery } from '@tanstack/react-query'
 
 export const useStockList = () => {
   const { data, isLoading, refetch } = useQuery<Array<IStockResponse>>({
-    queryKey: ['stock'],
+    queryKey: ['stocks'],
     queryFn: async () => {
       const response = await axiosInstance.get('/stock')
       return response.data
     },
+    staleTime: 6000,
   })
 
   return {
@@ -26,6 +27,7 @@ export const useStockDetail = (id?: string) => {
       return response.data
     },
     enabled: !!id,
+    staleTime: 6000,
   })
   return {
     data,
