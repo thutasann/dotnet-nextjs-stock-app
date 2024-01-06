@@ -15,8 +15,10 @@ import axiosInstance from '@/services/api'
 import { IStockRequest } from '@/types/stocks.interface'
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
+import { useToast } from '../ui/use-toast'
 
 export function AddStockModaienl() {
+  const { toast } = useToast()
   const { refetch } = useStockList()
   const [open, setOpen] = useState(false)
   const [symbol, setSymbol] = useState('')
@@ -42,6 +44,10 @@ export function AddStockModaienl() {
     onSuccess: () => {
       refetch()
       setOpen(false)
+      toast({
+        title: 'Stock Added',
+        description: 'Stock is successfully added',
+      })
     },
   })
 
