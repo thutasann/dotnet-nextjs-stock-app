@@ -14,7 +14,7 @@ namespace api.Mappers
         /// </summary>
         /// <param name="commentModel"></param>
         /// <returns></returns>
-       public static CommentDto ToCommentDto(this Comment commentModel){
+        public static CommentDto ToCommentDto(this Comment commentModel){
             return new CommentDto{
                 Id = commentModel.Id,
                 Title = commentModel.Title,
@@ -22,6 +22,19 @@ namespace api.Mappers
                 CreatedOn = commentModel.CreatedOn,
                 StockId = commentModel.StockId
             };
-       } 
+        } 
+
+        /// <summary>
+        /// To Comment From Create
+        /// </summary>
+        /// <param name="commentModel"></param>
+        /// <returns></returns>
+        public static Comment ToCommentFromCreate(this CreateCommentDto commentDto, int stockId){
+            return new Comment{
+                Title = commentDto.Title,
+                Content = commentDto.Content,
+                StockId = stockId
+            };
+        } 
     }
 }
