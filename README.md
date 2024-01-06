@@ -1,8 +1,6 @@
 # Dotnet-Core Nextjs Stock Market FullStack App
 
-This is the Stock Market Social Media Platform FullStack App with DotnetCore and Nextjs.
-
-This app will be mainly focused on the `dotnet` backend.
+This is the Stock Market Social Media Platform FullStack App with DotnetCore and Nextjs and This app will be mainly focused on the `dotnet` backend.
 
 ## Tech Stacks
 
