@@ -1,19 +1,54 @@
 import Container from '@/components/customs/Container'
 import Loader from '@/components/customs/Loader'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { useToast } from '@/components/ui/use-toast'
 import { useStockDetail } from '@/lib/hooks/useStock'
+import axiosInstance from '@/services/api'
+import { ICommentRequest } from '@/types/stocks.interface'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import Head from 'next/head'
 import { useParams } from 'next/navigation'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import { IoArrowBack } from 'react-icons/io5'
 
 function StockDetailPage() {
+  const { toast } = useToast()
+  const queryClient = useQueryClient()
+  const [form, setForm] = useState(false)
   const router = useRouter()
   const params = useParams<{ id: string }>()
   const { data, isLoading } = useStockDetail(params?.id)
-  console.log('isLoading', isLoading)
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: (commentDto: ICommentRequest) => {
+      return axiosInstance.post(`/comment/${data?.id}`, commentDto)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['stock'] })
+      toast({
+        title: 'Comment Added',
+        description: 'Comment is successfully added',
+      })
+      setTitle('')
+      setContent('')
+    },
+    onError: () => {
+      toast({
+        title: 'Something went wrong',
+      })
+    },
+  })
 
   return (
     <Container>
+      <Head>
+        <title>{data?.symbol}</title>
+      </Head>
       {isLoading ? (
         <Loader />
       ) : (
@@ -36,7 +71,36 @@ function StockDetailPage() {
             </div>
           </section>
           <section className="w-full">
-            <h3 className="mt-3 font-bold text-xl">Comments : </h3>
+            <div className="mt-3 w-full flex items-center justify-between">
+              <h3 className="font-bold text-xl">Comments : </h3>
+              <p
+                aria-hidden="true"
+                onClick={() => setForm((prev) => !prev)}
+                className="underline cursor-pointer hover:opacity-60"
+              >
+                Add Comment
+              </p>
+            </div>
+
+            {form && (
+              <div className="mt-3 space-y-3">
+                <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter Title" />
+                <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Enter Content" />
+                <Button
+                  onClick={() => {
+                    mutate({
+                      title,
+                      content,
+                    })
+                  }}
+                  disabled={!title || !content || isPending}
+                  variant="secondary"
+                >
+                  Add Comment
+                </Button>
+              </div>
+            )}
+
             {data && data.comments?.length > 0 ? (
               <>
                 {data?.comments?.map((comment) => (

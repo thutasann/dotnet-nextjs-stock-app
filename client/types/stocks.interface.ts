@@ -24,3 +24,8 @@ export interface IStockRequest {
   industry: string
   marketCap: number
 }
+
+export interface ICommentRequest {
+  title: string
+  content: string
+}

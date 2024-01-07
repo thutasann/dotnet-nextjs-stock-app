@@ -10,16 +10,15 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useStockList } from '@/lib/hooks/useStock'
 import axiosInstance from '@/services/api'
 import { IStockRequest } from '@/types/stocks.interface'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useToast } from '../ui/use-toast'
 
 export function AddStockModaienl() {
   const { toast } = useToast()
-  const { refetch } = useStockList()
+  const queryClient = useQueryClient()
   const [open, setOpen] = useState(false)
   const [symbol, setSymbol] = useState('')
   const [companyName, setCompanyName] = useState('')
@@ -42,11 +41,16 @@ export function AddStockModaienl() {
       return axiosInstance.post(`/stock`, stockDto)
     },
     onSuccess: () => {
-      refetch()
+      queryClient.invalidateQueries({ queryKey: ['stocks'] })
       setOpen(false)
       toast({
         title: 'Stock Added',
         description: 'Stock is successfully added',
+      })
+    },
+    onError: () => {
+      toast({
+        title: 'Something went wrong',
       })
     },
   })
