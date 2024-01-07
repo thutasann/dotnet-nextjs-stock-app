@@ -21,7 +21,7 @@ namespace api.Mappers
         } 
 
         /// <summary>
-        /// To Comment From Create
+        /// To Comment From Create Mapper
         /// </summary>
         /// <param name="commentModel"></param>
         /// <returns></returns>
@@ -32,5 +32,17 @@ namespace api.Mappers
                 StockId = stockId
             };
         } 
+
+        /// <summary>
+        /// To Comment From Update
+        /// </summary>
+        /// <param name="commentDto"></param>
+        /// <returns></returns>
+        public static Comment ToCommentFromUpdate(this UpdateCommentDto commentDto){   
+            return new Comment{
+                Title = commentDto.Title,
+                Content = commentDto.Content,
+            };
+        }
     }
 }
