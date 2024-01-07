@@ -4,6 +4,9 @@ import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { useRouter } from 'next/router'
 import { Button } from '../ui/button'
+import { useToast } from '../ui/use-toast'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import axiosInstance from '@/services/api'
 
 interface IStockTable {
   data: IStockResponse[]
@@ -11,6 +14,26 @@ interface IStockTable {
 
 function StockTable({ data }: IStockTable) {
   const router = useRouter()
+  const { toast } = useToast()
+  const queryClient = useQueryClient()
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: (id: number) => {
+      return axiosInstance.delete(`/stock/${id}`)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['stocks'] })
+      toast({
+        title: 'Stock Deleted',
+        description: 'Stock is successfully deleted',
+      })
+    },
+    onError: () => {
+      toast({
+        title: 'Something went wrong',
+      })
+    },
+  })
 
   const columns: ColumnDef<IStockResponse>[] = [
     {
@@ -32,9 +55,14 @@ function StockTable({ data }: IStockTable) {
     {
       header: 'Action',
       cell: ({ row }) => (
-        <Button variant="secondary" onClick={() => router.push(`/stock/${row.getValue('id')}`)}>
-          View Detail
-        </Button>
+        <div className="flex items-center gap-3">
+          <Button variant="secondary" onClick={() => router.push(`/stock/${row.getValue('id')}`)}>
+            View Detail
+          </Button>
+          <Button variant="destructive" onClick={() => mutate(row.getValue('id'))}>
+            Delete
+          </Button>
+        </div>
       ),
     },
   ]
