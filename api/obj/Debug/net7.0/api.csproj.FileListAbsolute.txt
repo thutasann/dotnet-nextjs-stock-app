@@ -93,3 +93,5 @@
 /Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Newtonsoft.Json.dll
 /Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Newtonsoft.Json.Bson.dll
+/Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/thutasann/Desktop/RESEARCHES/C#/dotnet-nextjs-stock-app/api/bin/Debug/net7.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
